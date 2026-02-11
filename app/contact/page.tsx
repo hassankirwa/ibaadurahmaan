@@ -16,7 +16,51 @@ import {
   Globe,
   Send,
   CheckCircle,
+  Facebook,
+  Instagram,
+  Youtube,
 } from "lucide-react";
+
+const socialLinks = [
+  {
+    label: "Facebook",
+    href: "https://facebook.com/ibaadurahman",
+    icon: Facebook,
+    handle: "@ibaadurahman",
+  },
+  {
+    label: "Instagram",
+    href: "https://instagram.com/ibaadurahman",
+    icon: Instagram,
+    handle: "@ibaadurahman",
+  },
+  {
+    label: "TikTok",
+    href: "https://tiktok.com/@ibaadurahman",
+    icon: ({ className }: { className?: string }) => (
+      <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.3 0 .59.05.86.12V9.01a6.27 6.27 0 0 0-.86-.06 6.33 6.33 0 0 0-6.33 6.33A6.33 6.33 0 0 0 9.49 21.6a6.33 6.33 0 0 0 6.33-6.33V8.72a8.16 8.16 0 0 0 3.77.98V6.69z" />
+      </svg>
+    ),
+    handle: "@ibaadurahman",
+  },
+  {
+    label: "YouTube",
+    href: "https://youtube.com/@ibaadurahman",
+    icon: Youtube,
+    handle: "@ibaadurahman",
+  },
+  {
+    label: "X (Twitter)",
+    href: "https://x.com/ibaadurahman",
+    icon: ({ className }: { className?: string }) => (
+      <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      </svg>
+    ),
+    handle: "@ibaadurahman",
+  },
+];
 
 const contactInfo = [
   {
@@ -97,7 +141,37 @@ export default function ContactPage() {
                 ))}
               </div>
 
-              <div className="mt-10 rounded-2xl bg-primary p-8">
+              {/* Social Media */}
+              <div className="mt-10">
+                <h3 className="font-serif text-xl font-bold text-foreground mb-4">
+                  Follow Us
+                </h3>
+                <div className="flex flex-col gap-3">
+                  {socialLinks.map((social) => (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 rounded-xl border border-border bg-card p-3 transition-all hover:border-primary/30 hover:shadow-md group"
+                    >
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                        <social.icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-foreground">
+                          {social.label}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          {social.handle}
+                        </p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-8 rounded-2xl bg-primary p-8">
                 <h3 className="font-serif text-xl font-bold text-primary-foreground mb-3">
                   Location
                 </h3>
